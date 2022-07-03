@@ -193,7 +193,7 @@ public class TripScheduleController {
 	@PutMapping("/{id}")
 	@ApiOperation(value = "", authorizations = {@Authorization(value = "apiKey") })
 	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<?> update(@Valid @RequestBody TripScheduleRequest tripScheduleRequest,
+	public ResponseEntity<?> updateTripSchedule(@Valid @RequestBody TripScheduleRequest tripScheduleRequest,
 			@PathVariable Long id) {
 		
 		//Ubah field sesuai tipe data di Java

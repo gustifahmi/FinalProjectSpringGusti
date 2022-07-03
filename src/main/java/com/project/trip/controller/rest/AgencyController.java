@@ -173,7 +173,7 @@ public class AgencyController {
 	@PutMapping("/{id}")
 	@ApiOperation(value = "", authorizations = {@Authorization(value = "apiKey") })
 	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<?> update(@Valid @RequestBody AgencyRequest agencyRequest, @PathVariable Long id) {
+	public ResponseEntity<?> updateAgency(@Valid @RequestBody AgencyRequest agencyRequest, @PathVariable Long id) {
 		
 		//Ubah field sesuai tipe data di java
 		String code = agencyRequest.getCode();

@@ -123,7 +123,7 @@ public class StopController {
 	@PutMapping("/{id}")
 	@ApiOperation(value = "", authorizations = {@Authorization(value = "apiKey") })
 	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<?> update(@Valid @RequestBody StopRequest stopRequest, @PathVariable Long id) {
+	public ResponseEntity<?> updateStop(@Valid @RequestBody StopRequest stopRequest, @PathVariable Long id) {
 
 		//Ubah field sesuai tipe data di Java
 		String code = stopRequest.getCode();

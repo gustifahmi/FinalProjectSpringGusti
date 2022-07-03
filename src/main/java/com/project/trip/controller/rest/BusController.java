@@ -173,7 +173,7 @@ public class BusController {
 	@PutMapping("/{id}")
 	@ApiOperation(value = "", authorizations = {@Authorization(value = "apiKey") })
 	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<?> update(@Valid @RequestBody BusRequest busRequest, @PathVariable Long id) {
+	public ResponseEntity<?> updateBus(@Valid @RequestBody BusRequest busRequest, @PathVariable Long id) {
 
 		//Ubah field sesuai tipe data di Java
 		String code = busRequest.getCode();

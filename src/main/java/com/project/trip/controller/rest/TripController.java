@@ -324,7 +324,7 @@ public class TripController {
 	@PutMapping("/{id}")
 	@ApiOperation(value = "", authorizations = {@Authorization(value = "apiKey") })
 	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<?> update(@Valid @RequestBody TripRequest tripRequest, @PathVariable Long id) {
+	public ResponseEntity<?> updateTrip(@Valid @RequestBody TripRequest tripRequest, @PathVariable Long id) {
 
 		//Ubah field sesuai tipe data di Java
 		int fare = tripRequest.getFare();
