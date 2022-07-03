@@ -1,4 +1,4 @@
-package com.project.trip.controller;
+package com.project.trip.controller.rest;
 
 import java.util.ArrayList;
 import java.util.List;

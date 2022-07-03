@@ -25,7 +25,7 @@ public class FinalProjectGustiApplication {
 	@Bean
 	Docket postsApi() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.project.trip.controller")).build()
+				.apis(RequestHandlerSelectors.basePackage("com.project.trip.controller.rest")).build()
 				.securitySchemes(Arrays.asList(apiKey()));
 	}
 

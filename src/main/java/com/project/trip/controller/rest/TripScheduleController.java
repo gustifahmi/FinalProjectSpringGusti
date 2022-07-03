@@ -1,4 +1,4 @@
-package com.project.trip.controller;
+package com.project.trip.controller.rest;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -67,10 +67,19 @@ public class TripScheduleController {
 		
 		//Get trip detail
 		Trip tripDetail = tripServiceImpl.getTripById(tripDetailId);
-		
+
 		//Jika data trip detail tidak ditemukan, kembalikan bad request
 		if(tripDetail.getId() == null) {
 			Response errorResponse = new Response("400", "Bad Request", "Data trip detail tidak ditemukan");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+		}
+
+		//Get LocalDate hari ini
+		LocalDate today = LocalDate.now();
+		
+		//Jika trip schedule sudah lewat, kembalikan bad request
+		if(tripDate.isBefore(today)) {
+			Response errorResponse = new Response("400", "Bad Request", "Trip date sudah lewat, silahkan masukkan trip date yang lain");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
 		}
 		
@@ -179,7 +188,6 @@ public class TripScheduleController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
 		}
 	}
-
 	
 	//Mengubah salah satu TripSchedule berdasarkan id
 	@PutMapping("/{id}")
@@ -219,6 +227,15 @@ public class TripScheduleController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
 		}
 
+		//Get LocalDate hari ini
+		LocalDate today = LocalDate.now();
+		
+		//Jika trip schedule sudah lewat, kembalikan bad request
+		if(tripDate.isBefore(today)) {
+			Response errorResponse = new Response("400", "Bad Request", "Trip date sudah lewat, silahkan masukkan trip date yang lain");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+		}
+		
 		//Ambil kapasitas bus, lalu gunakan sebagai availableSeats
 		int availableSeats = tripDetail.getBus().getCapacity();
 		

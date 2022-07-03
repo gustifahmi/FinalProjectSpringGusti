@@ -1,4 +1,4 @@
-package com.project.trip.controller;
+package com.project.trip.controller.rest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -139,7 +139,7 @@ public class AgencyController {
 	//Mengambil semua agency yang dimiliki seorang owner
 	@GetMapping("/owner/{ownerId}")
 	@ApiOperation(value = "", authorizations = {@Authorization(value = "apiKey") })
-	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
 	public ResponseEntity<?> getAgencyByOwnerId(@PathVariable(value = "ownerId") Long ownerId) {
 		
 		//Jika ownerId tidak valid, kembalikan not found
@@ -172,7 +172,7 @@ public class AgencyController {
 	//Mengubah salah satu agency berdasarkan id
 	@PutMapping("/{id}")
 	@ApiOperation(value = "", authorizations = {@Authorization(value = "apiKey") })
-	@PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> update(@Valid @RequestBody AgencyRequest agencyRequest, @PathVariable Long id) {
 		
 		//Ubah field sesuai tipe data di java

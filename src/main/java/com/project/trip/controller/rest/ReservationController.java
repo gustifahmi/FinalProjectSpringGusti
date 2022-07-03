@@ -1,4 +1,4 @@
-package com.project.trip.controller;
+package com.project.trip.controller.rest;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -25,6 +25,7 @@ import com.project.trip.model.Ticket;
 import com.project.trip.model.TripSchedule;
 import com.project.trip.model.User;
 import com.project.trip.payload.request.ReservationRequest;
+import com.project.trip.payload.response.AvailableSeatNumbersResponse;
 import com.project.trip.payload.response.Response;
 import com.project.trip.payload.response.TicketResponse;
 import com.project.trip.service.impl.TicketServiceImpl;
@@ -57,7 +58,7 @@ public class ReservationController {
 	@PostMapping("")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
 	@PreAuthorize("hasRole('USER')")
-	public ResponseEntity<?> beliTicket(@Valid @RequestBody ReservationRequest reservationRequest) {
+	public ResponseEntity<?> bookTicket(@Valid @RequestBody ReservationRequest reservationRequest) {
 	
 		// Ubah field sesuai tipe data di Java
 		int seatNumber = reservationRequest.getSeatNumber();
@@ -98,7 +99,6 @@ public class ReservationController {
 
 		//Get LocalDate hari ini
 		LocalDate today = LocalDate.now();
-		System.out.println("-----TODAY DATE-----: " + today);
 		
 		//Parse kolom trip_date pada objek TripSchedule ke tipe LocalDate
 		String tripDateString = tripScheduleServiceImpl.getTripScheduleById(tripScheduleId).getTripDate();
@@ -201,8 +201,7 @@ public class ReservationController {
 		}
 	}
 
-	// Mengambil satu ticket berdasarkan id, tapi hanya bisa diakses oleh pemilik
-	// ticket
+	// Mengambil satu ticket berdasarkan id, tapi hanya bisa diakses oleh pemilik ticket
 	@GetMapping("/{id}")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
 	@PreAuthorize("hasRole('USER')")
@@ -239,11 +238,49 @@ public class ReservationController {
 		return ResponseEntity.status(HttpStatus.OK).body(ticketResponse);
 	}
 
+	// Mengambil semua ticket yang dimiliki oleh user yang login
+	@GetMapping("/available-seat-number/{tripScheduleId}")
+	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
+	@PreAuthorize("hasRole('USER')")
+	public ResponseEntity<?> getAvailableSeatNumberByTripScheduleId(@PathVariable Long tripScheduleId) {
+		
+		//Get trip schedule
+		TripSchedule schedule = tripScheduleServiceImpl.getTripScheduleById(tripScheduleId);
+
+		// Jika tidak ada ticket dengan id tersebut, kembalikan not found
+		if (schedule.getId() == null) {
+			// Jika tidak ada tripSchedule dengan id tersebut, kembalikan not found
+			Response errorResponse = new Response("404", "Not Found", "Data trip schedule tidak ditemukan");
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+		}
+		
+		//Get daftar seat number yang sudah dibook di suatu trip schedule
+		List<Integer> bookedSeatNumbers = tripScheduleServiceImpl.getAllSeatNumberBooked(tripScheduleId);
+		
+		//Get kapasitas bus
+		int capacity = schedule.getTripDetail().getBus().getCapacity();
+		
+		//Inisiasi availableSeatNumbers
+		List<Integer> availableSeatNumbers = new ArrayList<>();
+		
+		//Cari seat number yang available masukkan ke list availableSeatNumbers
+		for(int i = 1; i <= capacity; i++) {
+			if(!bookedSeatNumbers.contains(i)) {
+				availableSeatNumbers.add(i);
+			}
+		}
+		
+		//Kembalikan response
+		AvailableSeatNumbersResponse availableSeatNumbersResponse = 
+				new AvailableSeatNumbersResponse(tripScheduleId, availableSeatNumbers);
+		return ResponseEntity.status(HttpStatus.OK).body(availableSeatNumbersResponse);
+	}
+
 	// Menghapus satu ticket berdasarkan id
 	@DeleteMapping("/{id}")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
 	@PreAuthorize("hasRole('USER')")
-	public ResponseEntity<?> batalkanTicket(@PathVariable Long id) {
+	public ResponseEntity<?> cancelTicket(@PathVariable Long id) {
 
 		// Coba get ticket
 		Ticket ticket = ticketServiceImpl.getTicketById(id);

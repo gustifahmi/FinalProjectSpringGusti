@@ -1,4 +1,4 @@
-package com.project.trip.controller;
+package com.project.trip.controller.rest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ import io.swagger.annotations.Authorization;
 //Controller untuk Stop
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/v1/Stop")
+@RequestMapping("/api/v1/stop")
 public class StopController {
 
 	//Inisiasi stopServiceImpl

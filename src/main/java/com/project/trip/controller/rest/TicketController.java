@@ -1,4 +1,4 @@
-package com.project.trip.controller;
+package com.project.trip.controller.rest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -116,7 +116,7 @@ public class TicketController {
 			return ResponseEntity.status(HttpStatus.OK).body(ticketResponses);
 		} else {
 			//Jika tidak ada ticket tersimpan, maka response statusnya not found
-			Response errorResponse = new Response("404", "Not Found", "Tidak ada ticket yang dipesan dari yip schedule tersebut");
+			Response errorResponse = new Response("404", "Not Found", "Tidak ada ticket yang dipesan dari trip schedule tersebut");
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
 		}
 	}
