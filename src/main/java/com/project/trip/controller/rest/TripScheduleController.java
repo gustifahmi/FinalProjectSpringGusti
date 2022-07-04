@@ -79,7 +79,8 @@ public class TripScheduleController {
 		
 		//Jika trip schedule sudah lewat, kembalikan bad request
 		if(tripDate.isBefore(today)) {
-			Response errorResponse = new Response("400", "Bad Request", "Trip date sudah lewat, silahkan masukkan trip date yang lain");
+			Response errorResponse = new Response("400", "Bad Request", "Trip date sudah lewat,"
+					+ " silahkan masukkan trip date yang lain");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
 		}
 		

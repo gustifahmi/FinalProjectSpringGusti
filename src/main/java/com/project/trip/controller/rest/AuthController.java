@@ -69,8 +69,9 @@ public class AuthController {
 				.collect(Collectors.toList());
 
 		//Kembalikan response ok
-		JwtResponse jwtResponse = new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(),
-				userDetails.getFirstName(), userDetails.getLastName(), userDetails.getMobileNumber(), roles);
+		JwtResponse jwtResponse = new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(),
+				userDetails.getEmail(), userDetails.getFirstName(), userDetails.getLastName(),
+				userDetails.getMobileNumber(), roles);
 		return ResponseEntity.status(HttpStatus.OK).body(jwtResponse);
 	}
 }

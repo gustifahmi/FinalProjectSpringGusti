@@ -65,7 +65,8 @@ public class ReservationController {
 		Long tripScheduleId = reservationRequest.getTripScheduleId();
 
 		// Mengambil passengerId dari user yang memesan
-		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getPrincipal();
 		String username = userDetails.getUsername();
 		User user = userServiceImpl.getUserByUsername(username);
 		Long passengerId = user.getId();
@@ -106,7 +107,8 @@ public class ReservationController {
 		
 		//Jika trip schedule sudah lewat, kembalikan bad request
 		if(tripDate.isBefore(today)) {
-			Response errorResponse = new Response("400", "Bad Request", "Trip schedule sudah lewat, silahkan pilih trip schedule yang lain");
+			Response errorResponse = new Response("400", "Bad Request", "Trip schedule sudah lewat,"
+					+ " silahkan pilih trip schedule yang lain");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
 		}
 		
@@ -119,12 +121,13 @@ public class ReservationController {
 		// Cek available seats
 		int availableSeats = schedule.getAvailableSeats();
 		if (availableSeats == 0) {
-			Response errorResponse = new Response("400", "Bad Request", "Mohon maaf, tiket sudah habis");
+			Response errorResponse = new Response("400", "Bad Request", "Mohon maaf, ticket sudah habis");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
 		}
 
 		// Mengecek apakah user sudah memesan ticket di trip schedule ini
-		int bookedSeatsByPassenger = ticketServiceImpl.getNumberOfBookedSeatsByPassengerId(passengerId, tripScheduleId);
+		int bookedSeatsByPassenger = ticketServiceImpl.getNumberOfBookedSeatsByPassengerId(passengerId,
+				tripScheduleId);
 
 		// Kalau sudah memesan, tidak bisa memesan lagi di trip schedule yang sama
 		if (bookedSeatsByPassenger > 0) {
@@ -175,7 +178,8 @@ public class ReservationController {
 	public ResponseEntity<?> getAllOwnedTicketByLoggedInUser() {
 
 		// Mengambil passengerId dari user yang memesan
-		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getPrincipal();
 		String username = userDetails.getUsername();
 		User user = userServiceImpl.getUserByUsername(username);
 		Long passengerId = user.getId();
@@ -189,8 +193,9 @@ public class ReservationController {
 			List<TicketResponse> ticketResponses = new ArrayList<>();
 
 			for (Ticket ticket : tickets) {
-				ticketResponses.add(new TicketResponse(ticket.getId(), ticket.getSeatNumber(), ticket.getCancellable(),
-						ticket.getJourneyDate(), ticket.getPassenger().getId(), ticket.getTripSchedule().getId()));
+				ticketResponses.add(new TicketResponse(ticket.getId(), ticket.getSeatNumber(),
+						ticket.getCancellable(), ticket.getJourneyDate(), ticket.getPassenger().getId(),
+						ticket.getTripSchedule().getId()));
 			}
 
 			return ResponseEntity.status(HttpStatus.OK).body(ticketResponses);
@@ -218,14 +223,16 @@ public class ReservationController {
 		}
 
 		// Mengambil passengerId dari user yang memesan
-		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getPrincipal();
 		String username = userDetails.getUsername();
 		User user = userServiceImpl.getUserByUsername(username);
 		Long passengerId = user.getId();
 
 		//Jika ticket bukan milik user yang login, kembalikan bad request
 		if(ticket.getPassenger().getId() != passengerId) {
-			Response errorResponse = new Response("400", "Bad Request", "Anda tidak dapat melihat ticket milik penumpang lain");
+			Response errorResponse = new Response("400", "Bad Request", "Anda tidak dapat melihat ticket"
+					+ " milik penumpang lain");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
 		}
 		
@@ -293,7 +300,8 @@ public class ReservationController {
 		}
 
 		// Mengambil passengerId dari user yang memesan
-		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getPrincipal();
 		String username = userDetails.getUsername();
 		User user = userServiceImpl.getUserByUsername(username);
 		Long passengerId = user.getId();
@@ -308,7 +316,8 @@ public class ReservationController {
 
 		if (ticket.getCancellable() == false) {
 			// Jika cancellable false, kembalikan bad request
-			Response errorResponse = new Response("400", "Bad Request", "Mohon maaf, ticket tidak dapat dibatalkan");
+			Response errorResponse = new Response("400", "Bad Request", "Mohon maaf, ticket tidak dapat"
+					+ " dibatalkan");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
 		}
 
