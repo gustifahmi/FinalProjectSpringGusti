@@ -94,7 +94,7 @@ public class TripScheduleController {
 		tripScheduleServiceImpl.saveTripSchedule(tripSchedule);
 		
 		//Kembalikan response
-		Response successResponse = new Response("200", "OK", "TripSchedule berhasil disimpan");
+		Response successResponse = new Response("200", "OK", "Trip schedule berhasil disimpan");
 		return ResponseEntity.status(HttpStatus.OK).body(successResponse);
 	}
 	
@@ -141,12 +141,6 @@ public class TripScheduleController {
 			TripScheduleResponse tripScheduleResponse = new TripScheduleResponse(tripSchedule.getId(),
 					tripSchedule.getTripDate(), tripSchedule.getAvailableSeats(),
 					tripSchedule.getTripDetail().getId());
-			
-			List<Integer> seatNumbers = tripScheduleServiceImpl.getAllSeatNumberBooked(id);
-			System.out.print("BOOKED SEAT NUMBER: ");
-			for(int number: seatNumbers) {
-				System.out.print(number + ", ");
-			}
 			
 			return ResponseEntity.status(HttpStatus.OK).body(tripScheduleResponse);
 		} else {
@@ -233,7 +227,8 @@ public class TripScheduleController {
 		
 		//Jika trip schedule sudah lewat, kembalikan bad request
 		if(tripDate.isBefore(today)) {
-			Response errorResponse = new Response("400", "Bad Request", "Trip date sudah lewat, silahkan masukkan trip date yang lain");
+			Response errorResponse = new Response("400", "Bad Request", "Trip date sudah lewat, silahkan"
+					+ " masukkan trip date yang lain");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
 		}
 		

@@ -117,7 +117,8 @@ public class TripController {
 
 		//Jika source stop dan dest stop sama, kembalikan bad request
 		if(sourceStop.getId() == destStop.getId()) {
-			Response errorResponse = new Response("400", "Bad Request", "Field sourceStopId dan destStopId tidak boleh sama");
+			Response errorResponse = new Response("400", "Bad Request", "Field sourceStopId dan destStopId"
+					+ " tidak boleh sama");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
 		}
 		
@@ -281,7 +282,8 @@ public class TripController {
 			return ResponseEntity.status(HttpStatus.OK).body(tripResponses);
 		} else {
 			//Jika tidak ada trip, maka response statusnya not found
-			Response errorResponse = new Response("404", "Not Found", "Tidak ada trip yang berangkat dari stop tersebut");
+			Response errorResponse = new Response("404", "Not Found", "Tidak ada trip yang berangkat"
+					+ " dari stop tersebut");
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
 		}
 	}
@@ -315,7 +317,8 @@ public class TripController {
 			return ResponseEntity.status(HttpStatus.OK).body(tripResponses);
 		} else {
 			//Jika tidak ada trip, maka response statusnya not found
-			Response errorResponse = new Response("404", "Not Found", "Tidak ada trip yang bertujuan ke stop tersebut");
+			Response errorResponse = new Response("404", "Not Found", "Tidak ada trip yang bertujuan"
+					+ " ke stop tersebut");
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
 		}
 	}
@@ -383,7 +386,8 @@ public class TripController {
 		
 		//Jika source stop dan dest stop sama, kembalikan bad request
 		if(sourceStop.getId() == destStop.getId()) {
-			Response errorResponse = new Response("400", "Bad Request", "Field sourceStopId dan destStopId tidak boleh sama");
+			Response errorResponse = new Response("400", "Bad Request", "Field sourceStopId dan destStopId"
+					+ " tidak boleh sama");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
 		}
 		

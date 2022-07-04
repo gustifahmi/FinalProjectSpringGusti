@@ -98,7 +98,13 @@ public class TicketController {
 	@ApiOperation(value = "", authorizations = {@Authorization(value = "apiKey") })
 	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> getAllTicketByTripScheduleId(@PathVariable Long tripScheduleId) {
-		
+
+		//Jika tripScheduleId tidak valid, kembalikan not found
+		if(tripScheduleServiceImpl.getTripScheduleById(tripScheduleId).getId() != tripScheduleId) {
+			Response errorResponse = new Response("404", "Not Found", "Data trip schedule tidak ditemukan");
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+		}
+			
 		//Get all ticket
 		List<Ticket> tickets = ticketServiceImpl.getAllTicketByTripScheduleId(tripScheduleId);
 
@@ -116,7 +122,8 @@ public class TicketController {
 			return ResponseEntity.status(HttpStatus.OK).body(ticketResponses);
 		} else {
 			//Jika tidak ada ticket tersimpan, maka response statusnya not found
-			Response errorResponse = new Response("404", "Not Found", "Tidak ada ticket yang dipesan dari trip schedule tersebut");
+			Response errorResponse = new Response("404", "Not Found", "Tidak ada ticket yang dipesan"
+					+ " dari trip schedule tersebut");
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
 		}
 	}
