@@ -160,7 +160,7 @@ public class UserController {
 		
 		//Jika user tidak ditemukan, kembalikan response not found
 		if (user == null) {
-			Response errorResponse = new Response("404", "Not Found", "User tidak ditemukan");
+			Response errorResponse = new Response("404", "Not Found", "Data user tidak ditemukan");
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
 		}
 		
