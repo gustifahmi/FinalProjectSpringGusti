@@ -1,0 +1,1617 @@
+{
+	"info": {
+		"_postman_id": "1a07cffa-3bc8-4fff-b018-8a901be23a84",
+		"name": "Final Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Authenticate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin123\",\r\n    \"password\": \"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/auth",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"tesubah\",\r\n    \"lastName\": \"tesubah\",\r\n    \"mobileNumber\": \"tesubah\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/user/update",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"tes@gmail.com\",\r\n  \"firstName\": \"tes\",\r\n  \"lastName\": \"tes\",\r\n  \"mobileNumber\": \"628111333555\",\r\n  \"password\": \"testes\",\r\n  \"role\": [\r\n    \"user\"\r\n  ],\r\n  \"username\": \"testes\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/user/signup",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"password\": \"tesubah\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/user/update/password",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"update",
+								"password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reservation",
+			"item": [
+				{
+					"name": "Get All Owned Ticket By Logged In User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/reservation/passenger",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reservation",
+								"passenger"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Ticket By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/reservation/3",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reservation",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Available Seat Number By Trip Schedule Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/reservation/available-seat-number/1",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reservation",
+								"available-seat-number",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book Ticket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cancellable\": true,\r\n  \"seatNumber\": 5,\r\n  \"tripScheduleId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/reservation",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reservation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Ticket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/reservation/3",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reservation",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agency",
+			"item": [
+				{
+					"name": "Get All Agency",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/agency",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"agency"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Agency By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/agency/1",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"agency",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Agency By Owner Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/agency/owner/2",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"agency",
+								"owner",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"code\": \"PTHI\",\r\n  \"details\": \"Agency Bekasi\",\r\n  \"name\": \"PT Harapan Indah\",\r\n  \"ownerId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/agency",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"agency"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Agency",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"code\": \"PTMJ\",\r\n  \"details\": \"Agency Cikarang\",\r\n  \"name\": \"PT Makmur Jaya\",\r\n  \"ownerId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/agency/1",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"agency",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Agency",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/agency/1",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"agency",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bus",
+			"item": [
+				{
+					"name": "Get All Bus",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/bus",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bus By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/bus/2",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bus",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bus List By Agency Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/bus/agency/1",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bus",
+								"agency",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Bus",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"Kopaja-001\",\r\n    \"capacity\": 50,\r\n    \"make\": \"50\",\r\n    \"agencyId\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/bus",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Bus",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"Metromini=-001\",\r\n    \"capacity\": 40,\r\n    \"make\": \"40\",\r\n    \"agencyId\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/bus/4",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bus",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Bus",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/bus/4",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bus",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Stop",
+			"item": [
+				{
+					"name": "Get All Stop",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/stop",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"stop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Stop By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/stop/1",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"stop",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Stop",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"code\": \"Terminal-01\",\r\n  \"detail\": \"tes buat terminal\",\r\n  \"name\": \"Kampung Melayu\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/stop",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"stop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Stop",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"code\": \"Terminal-02\",\r\n  \"detail\": \"tes buat terminal\",\r\n  \"name\": \"Senen\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/stop/7",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"stop",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Stop",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/stop/7",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"stop",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ticket",
+			"item": [
+				{
+					"name": "Get All Ticket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/ticket",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ticket"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Ticket By Trip Schedule Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/ticket/trip-schedule/1",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ticket",
+								"trip-schedule",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Ticket By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/ticket/2",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ticket",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Trip",
+			"item": [
+				{
+					"name": "Get All Trip",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/trip",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"trip"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Trip By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/trip/1",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"trip",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Trip By Agency Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/trip/agency/1",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"trip",
+								"agency",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Trip By Bus Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/trip/bus/2",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"trip",
+								"bus",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Trip By Dest Stop Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/trip/dest-stop/1",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"trip",
+								"dest-stop",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Trip By Source Stop Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/trip/source-stop/1",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"trip",
+								"source-stop",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Trip",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"busId\": 2,\r\n  \"destStopId\": 3,\r\n  \"fare\": 15000,\r\n  \"journeyTime\": 4,\r\n  \"sourceStopId\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/trip",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"trip"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Trip",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"busId\": 2,\r\n  \"destStopId\": 4,\r\n  \"fare\": 30000,\r\n  \"journeyTime\": 8,\r\n  \"sourceStopId\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/trip/8",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"trip",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Trip",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/trip/8",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"trip",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Trip Schedule",
+			"item": [
+				{
+					"name": "Get All Trip Schedule",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/trip-schedule",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"trip-schedule"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Trip Schedule By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/trip-schedule/1",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"trip-schedule",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Trip Schedule By Trip Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/trip-schedule/trip/1",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"trip-schedule",
+								"trip",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Trip Schedule",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tripDate\": \"31-08-2022\",\r\n  \"tripDetailId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/trip-schedule",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"trip-schedule"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Trip Schedule",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tripDate\": \"31-09-2022\",\r\n  \"tripDetailId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/trip-schedule/8",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"trip-schedule",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Trip Schedule",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://final-project-gustifahmi.herokuapp.com/api/v1/trip-schedule/8",
+							"protocol": "https",
+							"host": [
+								"final-project-gustifahmi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"trip-schedule",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
