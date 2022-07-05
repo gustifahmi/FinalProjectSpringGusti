@@ -1,1 +1,2 @@
 https://final-project-gustifahmi.herokuapp.com
+(otomatis redirect ke halaman /swagger-ui.html)
